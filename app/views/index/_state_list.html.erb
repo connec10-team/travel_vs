@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="checkbox">
+    <label>
+      <%= radio_button_tag "state", "SD", params[:state] == "SD" ? true:false %>
+      北海道
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SH", params[:state] == "SH" ? true:false %>
+      北信越
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SE", params[:state] == "SE" ? true:false %>
+      東北
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SA", params[:state] == "SA" || params[:state].blank? ? true:false %>
+      関東
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SC", params[:state] == "SC" ? true:false %>
+      東海
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SB", params[:state] == "SB" ? true:false %>
+      関西
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SF", params[:state] == "SF" ? true:false %>
+      中国
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SI", params[:state] == "SI" ? true:false %>
+      四国
+    </label>
+    <label>
+      <%= radio_button_tag "state", "SG", params[:state] == "SG" ? true:false %>
+      九州・沖縄
+    </label>
+  </div>
+</div>

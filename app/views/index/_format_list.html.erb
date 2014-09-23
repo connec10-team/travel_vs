@@ -1,0 +1,54 @@
+<div class="hotel">
+
+  <h1><%= hotel_name %><br>
+  <% scr.each_value do |hotel| %>
+  <% if hotel.present? %>
+  <img src="<%= hotel[:img] %>" alt=".." class="img-thumbnail img-size">
+  <% end %>
+  <% end %>
+  </h1>
+  <br><br><br><br>
+  <table class="hotel_info">
+    <tr>
+      <th>
+      </th>
+      <th>メニュー１</th>
+      <th>メニュー２</th>
+      <th>メニュー３</th>
+    </tr>
+    <% scr.each do |site_name,hotel| %>
+    <tr>
+      <% if site_name == :Jalan %>
+        <% sitelogo = "/assets/jalan_logo.png" %>
+      <% elsif site_name == :Rakuten %>
+        <% sitelogo = "/assets/rakuten_travel_logo.png" %>
+      <% elsif site_name == :Ikkyu %>
+        <% sitelogo = "/assets/ikkyu_logo.png" %>
+      <% end %>
+      <td class="logo">
+      <% if hotel.present? %>
+      <%= link_to hotel[:url], {target: ["_blank"], style: "display: block;"} do %>
+        <%= image_tag sitelogo, :size => "128x64", :alt => site_name %>
+      <% end %>
+      <% else %>
+        <%= image_tag sitelogo, :size => "128x64", :alt => site_name %>
+      <% end %>
+      </td>
+      <% if hotel.present? %>
+      <% hotel[:menus].each do |menu| %>
+        <td class="menu">
+          <% if menu.present? %>
+          <%= menu[:title] %></br>
+          <font color="red"><%= menu[:price] %></font>
+          <% end %>
+        </td>
+      <% end %>
+      <% else %>
+        <td class="menu" colspan="3">
+        </td>
+      <% end %>
+    </tr>
+    <% end %>  
+
+  </table>
+</div>

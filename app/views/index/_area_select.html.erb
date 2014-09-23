@@ -1,0 +1,4 @@
+<%= select :pre, :code, @select_forms[:pre], selected: 13 %>
+<% if @select_forms[:area].present? %>
+<%= select :area, :code, @select_forms[:area], selected: 5 %>
+<% end %>

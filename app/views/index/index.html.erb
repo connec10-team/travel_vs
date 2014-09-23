@@ -1,0 +1,18 @@
+<%= link_to "#help", role: "button", data: {toggle: "modal"} do %>
+  <i class="glyphicon glyphicon-question-sign"></i>
+<% end %>
+
+<div id="help" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render partial: "help_modal" %>
+</div>
+
+<%= form_tag root_path(), method: :get, class: "form-horizontal" do %>
+  <%= render partial: "area_select" %>
+
+  <button class="btn btn-default" type="submit">search</button>
+<% end %>
+
+
+<% @format_scraping.each do |hotel_name, info| %>
+  <%= render partial: "format_list", locals:{hotel_name: hotel_name, scr: info} %>
+<% end %>

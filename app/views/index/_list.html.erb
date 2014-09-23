@@ -1,0 +1,25 @@
+<div class="col-sm-6 col-md-4" style="width: 300px">
+  <div class="thumbnail h100">
+    <%= link_to row[:url], target: ["_blank"] do %>
+      <h4 class="text-center"><%= row[:title] %></h4>
+    <% end %>
+    <div class="caption">
+      <% 0.upto(2) do |i| %>
+        <% if row[:menus][i].present? %>
+          <%= link_to row[:url], target: ["_blank"] do %>
+            <p>
+              <font color="#ff0000">
+                <%= row[:menus][i][:price].present? ? number_to_currency(row[:menus][i][:price], unit: "¥", precision: 0):"" %>
+              </font>
+              <small><%= row[:menus][i][:title]%></small>
+            </p>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= link_to row[:url], target: ["_blank"] do %>
+        <img src="<%= row[:img] %>" alt=".." class="img-thumbnail img-size">
+        <small class="text-description"><%= row[:description] %></small>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+// Place all the styles related to the index controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com
+.img-thumbnail.img-size{
+  width: 100px;
+  height: 80px;
+  float: left;
+  margin-right: 10px;
+}
+
+.text-description{
+  float: left;
+  width: 132px;
+  height: 100px;
+  word-break: break-all;
+}
+
+.thumbnail.h100{
+  height: 320px;
+}
+
+.w300{
+  width: 300px;
+  float: left;
+  margin-right: 10px;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+}
+
+.sitelogo{
+  height: 95px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.helpsitelogo{
+  width: 100px;
+  height: 70px;
+  float: left;
+  margin-left: 10px;
+}
+
+.h100{
+  height: 100px;
+}
+

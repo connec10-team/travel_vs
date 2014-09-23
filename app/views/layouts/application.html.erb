@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel VS</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Travel VS", root_path(), class: "navbar-brand" %>
+    </div>
+  </div>
+</div>
+
+<div id="contents" class="container">
+  <div id="message">
+  </div>
+  <%= yield %>
+</div>
+
+<div id="footer">
+  <p align="center">Copyright (C) 2014-<%= Time.now.year %> connect, Inc.</p>
+</div>
+</body>
+</html>
