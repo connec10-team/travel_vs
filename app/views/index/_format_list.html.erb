@@ -1,20 +1,24 @@
 <div class="hotel">
 
-  <h1><%= hotel_name %><br>
+  <h1><%= hotel_name %></h1>
+  <% desc_disp = false %>
   <% scr.each_value do |hotel| %>
   <% if hotel.present? %>
+  <% if hotel[:description].present? && desc_disp == false %>
+  <% desc_disp = true %>
+  <h3><%= hotel[:description] %></h3>
+  <% end %>
   <img src="<%= hotel[:img] %>" alt=".." class="img-thumbnail img-size">
   <% end %>
   <% end %>
-  </h1>
   <br><br><br><br>
   <table class="hotel_info">
     <tr>
       <th>
       </th>
-      <th>メニュー１</th>
-      <th>メニュー２</th>
-      <th>メニュー３</th>
+      <th>プラン１</th>
+      <th>プラン２</th>
+      <th>プラン３</th>
     </tr>
     <% scr.each do |site_name,hotel| %>
     <tr>
@@ -28,10 +32,10 @@
       <td class="logo">
       <% if hotel.present? %>
       <%= link_to hotel[:url], {target: ["_blank"], style: "display: block;"} do %>
-        <%= image_tag sitelogo, :size => "128x64", :alt => site_name %>
+        <%= image_tag sitelogo, :alt => site_name %>
       <% end %>
       <% else %>
-        <%= image_tag sitelogo, :size => "128x64", :alt => site_name %>
+        <%= image_tag sitelogo, :alt => site_name %>
       <% end %>
       </td>
       <% if hotel.present? %>
