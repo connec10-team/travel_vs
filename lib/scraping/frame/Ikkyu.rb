@@ -5,7 +5,6 @@ module Scraping
     class Ikkyu
       include Scraping::Frame
       URL="http://www.ikyu.com/ap/srch/UspW11103.aspx?kwd="
-      # URL="http://localhost:3000/jalan_test"
       def http_open(key, area_code = nil)
         # hotpepperのリスト取得path
         # xpath('//body/div/div[@id="contents"]/div[@id="mainContents"]/ul[@id="listWrapper oh"]')
