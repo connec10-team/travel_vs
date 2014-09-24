@@ -2,29 +2,29 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">サロン比較サイト(Salon VS)について</h3>
+      <h3 id="myModalLabel">トラベル比較サイト(Travel VS)について</h3>
     </div>
     <div class="modal-body">
       <blockquote>
-        <h4>サロン比較サイト(Salon VS)とは</h4>
+        <h4>トラベル比較サイト(Travel VS)とは</h4>
       </blockquote>
-      <p>行きたい店舗名を入力して、各webサイトの店舗情報やコース、値段などが一目で分かるサイト。</p>
+      <p>行きたい地域を選択すると、その地域にあるホテルのプランなどが一目で分かるサイト。</p>
       <blockquote>
         <h4>検索方法</h4>
       </blockquote>
-      <p>店舗名を入力して、自分が行きたい地区を選択するだけ!!</p>
+      <p>自分が行きたい地区を選択するだけ!!</p>
       <p>各サイトに情報がなければ表示しません。</p>
-      <small>* 地区毎の検索にviviviコムは対応しておりません。</small>
+      <small>* 現在東京のみ対応しています。</small>
       <blockquote>
         <h4>各比較サイト</h4>
       </blockquote>
-      <% beautylogo = "/assets/hotpepper_beauty_logo.png" %>
-      <% salonlogo = "/assets/rakuten_salon_logo.jpeg" %>
-      <% vivivilogo = "/assets/vivivi_logo.png" %>
+      <% jalan_logo = "/assets/jalan_logo.png" %>
+      <% rtravel_logo = "/assets/rakuten_travel_logo.png" %>
+      <% ikkyu_logo = "/assets/ikkyu_logo.png" %>
       <div class="h100">
-        <img src="<%= beautylogo  %>" alt=".." class="helpsitelogo" align="center">
-        <img src="<%= salonlogo  %>" alt=".." class="helpsitelogo" align="center">
-        <img src="<%= vivivilogo  %>" alt=".." class="helpsitelogo" align="center">
+        <%= image_tag jalan_logo, width: "100px", alt: "Jalan" %>
+        <%= image_tag rtravel_logo, width: "100px", alt: "Rakuten" %>
+        <%= image_tag ikkyu_logo, width: "100px", alt: "Ikkyu" %>
       </div>
     </div>
     <div class="modal-footer">
