@@ -40,12 +40,12 @@
       </td>
       <% if hotel.present? %>
       <% hotel[:menus].each do |menu| %>
-        <td class="menu">
-          <% if menu.present? %>
-          <%= menu[:title] %></br>
-          <font color="red"><%= menu[:price] %></font>
-          <% end %>
-        </td>
+      <% if menu.present? && menu[:title].present? %>
+      <td class="menu">
+        <%= menu[:title] %></br>
+        <font color="red"><%= menu[:price] %></font>
+      </td>
+      <% end %>
       <% end %>
       <% else %>
         <td class="menu" colspan="3">
