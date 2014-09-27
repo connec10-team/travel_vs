@@ -3,16 +3,22 @@ require 'nkf'
 class IndexController < ApplicationController
   def index
     @select_forms = Hash.new
-    @select_forms[:pre] = create_select_box(PREFECTURES)
-    @select_forms[:area] = create_select_box(PRE_AREA[params[:pre][:code].to_i]) if params[:pre].present?
+    @selected = Hash.new{|h,k| h[k] = ""}
     @scraping = Hash.new
-    if params[:area].present?
-      pre_str = PREFECTURES[params[:pre][:code].to_i]
-      area_str = PRE_AREA[params[:pre][:code].to_i][params[:area][:code].to_i]
-      word = [pre_str,area_str].join(" ")
-      scraping = Scraping::Html.new
-      scraping.open(word, params[:state])
-      @scraping = scraping.html
+
+    @select_forms[:pre] = create_select_box(PREFECTURES)
+    if params[:pre].present?
+      @select_forms[:area] = create_select_box(PRE_AREA[params[:pre][:code].to_i])
+      @selected[:pre] = params[:pre][:code].to_i
+      if params[:area].present? && PRE_AREA[params[:pre][:code].to_i]
+        pre_str = PREFECTURES[params[:pre][:code].to_i]
+        area_str = PRE_AREA[params[:pre][:code].to_i][params[:area][:code].to_i]
+        @selected[:area] = params[:area][:code].to_i
+        word = [area_str].join(" ")
+        scraping = Scraping::Html.new
+        scraping.open(word, params[:state])
+        @scraping = scraping.html
+      end
     end
     @format_scraping = format_scraping
     # @format_scraping = DBG
@@ -22,8 +28,12 @@ class IndexController < ApplicationController
   def create_select_box(hs)
     return if hs.nil?
     option_list = Array.new
-    hs.each do |code,str|
-      option_list << [str,code]
+    hs.each do |code,value|
+      if value.instance_of?(Array)
+        option_list << [value.join("・"),code]
+      else
+        option_list << [value,code]
+      end
     end
 
     return option_list

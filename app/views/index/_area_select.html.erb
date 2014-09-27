@@ -1,4 +1,4 @@
-<%= select :pre, :code, @select_forms[:pre], selected: 13 %>
+<%= select :pre, :code, @select_forms[:pre],selected: @selected[:pre], prompt: "都道府県を選択してください" %>
 <% if @select_forms[:area].present? %>
-<%= select :area, :code, @select_forms[:area], selected: 5 %>
+<%= select :area, :code, @select_forms[:area], selected: @selected[:area], prompt: "地域を選択してください" %>
 <% end %>

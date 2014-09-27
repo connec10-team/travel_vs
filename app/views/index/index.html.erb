@@ -6,7 +6,7 @@
   <%= render partial: "help_modal" %>
 </div>
 
-<%= form_tag root_path(), method: :get, class: "form-horizontal" do %>
+<%= form_tag root_path(), name: "search_form", method: :get, class: "form-horizontal" do %>
   <%= render partial: "area_select" %>
 
   <button class="btn btn-default" type="submit">search</button>

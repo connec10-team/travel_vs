@@ -90,24 +90,7 @@ module Scraping
       end
 
       def menu_selection(cache)
-        cut = Array.new
-        normal = Array.new
-        cache.each do |i|
-          if i[:title].index(/カット/)
-            i[:type] = :cut
-            cut.push(i)
-          else
-            i[:type] = :normal
-            normal.push(i)
-          end
-        end
-        count = max_count - cut.size
-        if count > 0
-          1.upto(count) do |i|
-            cut.push(normal[i-1])
-          end
-        end
-        cut
+        cache
       end
 
       def extraction(value)

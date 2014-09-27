@@ -91,6 +91,7 @@ module Scraping
             cut.push(normal[i-1])
           end
         end
+        p "cache",cache,"cut",cut
         cut
       end
 
