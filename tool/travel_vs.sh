@@ -2,9 +2,9 @@
 # wsmatch unicorn script
 
 
-APP_NAME=wsmatch
+APP_NAME=travel_vs
 APP_ROOT="/mnt/travel_vs"
-PID="$APP_ROOT/pids/unicorn.pid"
+PID="$APP_ROOT/tmp/pids/unicorn.pid"
 CMD="bundle exec unicorn_rails -c config/travel_server.conf -E production -D"
 
 start()
