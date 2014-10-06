@@ -1,5 +1,5 @@
 <!--★始まり-->
-<table cellspacing="0" cellpadding="6">
+<table cellspacing="0" cellpadding="6" <%= params[:pre].blank? ? "" : 'align=left' %>>
 	<tr>
 		<td>
 			<table width="100%" cellspacing="0" cellpadding="0" style="font-size:14zpx;line-height:140%;">
@@ -119,17 +119,17 @@
 	</tr>
 </table>
 <!--終わり★-->
-<!--
+<% if params[:pre].present? %>
 	<div class="map_frame">
-		<ul id="map_area_13" class="map_area">
-    		<li style="top: 30px;left: 30px;">
-        		<a href="/area1301/">
-            		<div><span class="fontL">新宿</span></div>
-            </a>
-        </li>
+		<ul id="map_area" class="map_area">
+			<% PRE_AREA[params[:pre][:code].to_i].each do |key, value| %>
+    		<li><a href=<%= "?pre[code]=#{params[:pre][:code]}&area[code]=#{key}" %>>
+          <div><%= value.join("・") %></div>
+        </a></li>
+      <% end %>
    </ul>
   </div>
--->
+<% end %>
 <br>
 <%= select :pre, :code, @select_forms[:pre],selected: @selected[:pre], prompt: "都道府県を選択してください" %>
 <% if @select_forms[:area].present? %>
