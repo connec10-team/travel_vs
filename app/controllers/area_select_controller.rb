@@ -1,6 +1,6 @@
 require 'nkf'
 
-class IndexController < ApplicationController
+class AreaSelectController < ApplicationController
   def index
     @select_forms = Hash.new
     @selected = Hash.new{|h,k| h[k] = ""}
@@ -12,6 +12,7 @@ class IndexController < ApplicationController
         @selected[:area] = params[:area][:code].to_i
       end
     end
+    p "test"
   end
 
   private

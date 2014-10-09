@@ -1,0 +1,10 @@
+<%= form_tag root_path(), name: "search_form", method: :get, class: "form-horizontal" do %>
+  <%= render partial: "index/area_select" %>
+
+  <button class="btn btn-default" type="submit">search</button>
+<% end %>
+
+
+<% @format_scraping.each do |hotel_name, info| %>
+  <%= render partial: "format_list", locals:{hotel_name: hotel_name, scr: info} %>
+<% end %>

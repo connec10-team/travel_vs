@@ -68,9 +68,8 @@ table.hotel_info td.menu{
 border-radius: 10px;
 border: 5px solid #9C9999;
 position: relative;
-width: 600px;
-left: 500px;
-/*height: 480px;*/
+width: 650px;
+/*height: 100px;*/
 }
 
 #map_area {
