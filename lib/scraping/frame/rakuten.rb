@@ -7,29 +7,6 @@ module Scraping
       URL="http://kw.travel.rakuten.co.jp/keyword/Search.do?charset=utf-8&f_max=30&lid=topC_search_keyword&f_query="
       # URL="http://localhost:3000/jalan_test"
       def http_open(key, area_code = nil)
-        # hotpepperのリスト取得path
-        # xpath('//body/div/div[@id="contents"]/div[@id="mainContents"]/ul[@id="listWrapper oh"]')
-        # その後
-        # count = 0
-        # xx.children.each do |i|
-        #   next if i.present?
-        #   a[count] = i
-        #   count += 1
-        # end
-        # 上記で各リストを配列でもたせることが出来る
-        # エリア別設定
-        # URL: serviceAreaCd=州のコード
-        # エリア別コード
-        # 北海道:SD
-        # 北信越:SH
-        # 東北:SE
-        # 関東:SA
-        # 東海:SC
-        # 関西:SB
-        # 中国:SF
-        # 四国:SI
-        # 九州・沖縄:SG
-        #
         @list = Hash.new
         super(@list)
         # key = NKF.nkf("-s",key)
@@ -43,10 +20,20 @@ module Scraping
         begin
           html = NKF.nkf("--utf8",open(url).read)
           doc = Nokogiri::HTML(html,nil,'utf-8')
-          lists = doc.xpath('//div[@class="hotelBox"]')
-          lists.each do |i|
-            next unless i.present?
-            arr_list.push(i)
+          page = doc.css('p[@class="pagingTitle"]').css('span').css('em')[0].inner_text.to_i / 30 + 1
+          if page > 0
+            page.times do |page_no|
+              page_url = url + "&f_next=#{page_no+1}"
+              Rails.logger.info "request jalan url: #{page_url}"
+              
+              html = NKF.nkf("--utf8",open(page_url).read)
+              doc = Nokogiri::HTML(html,nil,'utf-8')
+              lists = doc.xpath('//div[@class="hotelBox"]')
+              lists.each do |i|
+                next unless i.present?
+                arr_list.push(i)
+              end
+            end
           end
 
           arr_list.each_with_index do |value, key|
@@ -62,8 +49,8 @@ module Scraping
             @list[key][:url] = value.css('h2').css('a').attribute('href').value 
             @list[key][:img] = value.css('p[@class="hotelPhoto"]').css('a').css('img').attribute('src').value
             @list[key][:description] = value.css('dl[@class="hotelOutline"]').css('dd[@class="hotelCharacter"]').inner_text
+            @list[key][:area_word] = value.css('span[@class="city"]').inner_text
             menu = value.css('dd[@class="planInfo"]').css('div[@class="planBox"]')
-            # puts "#{key}xxxxxxxxxxxx",@list[key]
             set_menu(key, menu)
           end
         rescue Exception => e
@@ -87,6 +74,7 @@ module Scraping
           h = Hash.new
           h[:title] = i.css('h3').css('a').inner_text
           h[:price] = i.css('dd[@class="plnPrc"]').inner_text
+          h[:plan_url] = i.css('h3').css('a').attribute('href').value
 
           cache.push(h)
         end

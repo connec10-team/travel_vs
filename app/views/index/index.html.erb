@@ -12,7 +12,8 @@
   <button class="btn btn-default" type="submit">search</button>
 <% end %>
 
-
-<% @format_scraping.each do |hotel_name, info| %>
-  <%= render partial: "format_list", locals:{hotel_name: hotel_name, scr: info} %>
+<% if @result_hotels.present? %>
+<% @result_hotels.each do |hotel_name, hotels| %>
+  <%= render partial: "hotel_info", locals:{hotel_name: hotel_name, hotels: hotels} %>
+<% end %>
 <% end %>

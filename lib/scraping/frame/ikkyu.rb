@@ -6,29 +6,7 @@ module Scraping
       include Scraping::Frame
       URL="http://www.ikyu.com/ap/srch/UspW11103.aspx?kwd="
       def http_open(key, area_code = nil)
-        # hotpepperのリスト取得path
-        # xpath('//body/div/div[@id="contents"]/div[@id="mainContents"]/ul[@id="listWrapper oh"]')
-        # その後
-        # count = 0
-        # xx.children.each do |i|
-        #   next if i.present?
-        #   a[count] = i
-        #   count += 1
-        # end
-        # 上記で各リストを配列でもたせることが出来る
-        # エリア別設定
-        # URL: serviceAreaCd=州のコード
-        # エリア別コード
-        # 北海道:SD
-        # 北信越:SH
-        # 東北:SE
-        # 関東:SA
-        # 東海:SC
-        # 関西:SB
-        # 中国:SF
-        # 四国:SI
-        # 九州・沖縄:SG
-        #
+
         @list = Hash.new
         super(@list)
         key = NKF.nkf("-w",key)
@@ -75,6 +53,7 @@ module Scraping
             @list[key][:url] = value.css('td[@class="w11104-accinfo_h_name"]').css('a').attribute('href').value 
             @list[key][:img] = value.css('div[@class="w11104-accimg"]').css('a').css('img').attribute('src').value
             @list[key][:description] = value.css('span[@class="divlist_text_sub"]').inner_text
+            @list[key][:area_word] = value.css('td[@class="w11104-accinfo_h_name"]').css('span[@class="divlist_text_sub"]').inner_text
             menu = value.css('div[@class="keyword_result_rates"]').css('tr')
             set_menu(key, menu)
           end
@@ -97,8 +76,10 @@ module Scraping
         cache = Array.new
         value.each do |i|
           h = Hash.new
+          next if i.css('td[@class="col1 m"]').blank?
           h[:title] = i.css('td[@class="col1 m"]').inner_text
           h[:price] = i.css('td[@class="col4"]').inner_text
+          h[:plan_url] = "http://www.ikyu.com"+ i.css('td[@class="col1 m"]').css('a').attribute('href').value
           cache.push(h)
         end
         price_sort(cache)

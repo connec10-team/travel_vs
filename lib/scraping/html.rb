@@ -2,9 +2,8 @@ module Scraping
   class Html
     @search_module = Hash.new
     def initialize
-  #    @search_module = {:rakuten => Rakuten.new, :hot = > Hotpepper.new, :kamimado => Kamimado.new}
-      # @search_module = {:Jalan => Scraping::Frame::Jalan.new, :Rakuten => Scraping::Frame::Rakuten.new}
-       @search_module = {
+      # @search_module = {:Jalan => Scraping::Frame::Jalan.new}
+      @search_module = {
         :Jalan => Scraping::Frame::Jalan.new, 
         :Rakuten => Scraping::Frame::Rakuten.new,
         :Ikkyu => Scraping::Frame::Ikkyu.new

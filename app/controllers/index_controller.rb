@@ -1,30 +1,30 @@
 require 'nkf'
 
 class IndexController < ApplicationController
+
   def index
     @select_forms = Hash.new
     @selected = Hash.new{|h,k| h[k] = ""}
-    @scraping = Hash.new
 
-    @select_forms[:pre] = create_select_box(PREFECTURES)
+    @select_forms[:pre] = create_select_box(PREFECTURES)    
     if params[:pre].present?
-      @select_forms[:area] = create_select_box(PRE_AREA[params[:pre][:code].to_i])
       @selected[:pre] = params[:pre][:code].to_i
-      if params[:area].present? && PRE_AREA[params[:pre][:code].to_i]
-        pre_str = PREFECTURES[params[:pre][:code].to_i]
-        area_str = PRE_AREA[params[:pre][:code].to_i][params[:area][:code].to_i]
-        @selected[:area] = params[:area][:code].to_i
-        word = [area_str].join(" ")
-        scraping = Scraping::Html.new
-        scraping.open(word, params[:state])
-        @scraping = scraping.html
-      end
+      @select_forms[:area] = create_select_box(PRE_AREA[params[:pre][:code].to_i])
     end
-    @format_scraping = format_scraping
-    # @format_scraping = DBG
+    if params[:area].present? && PRE_AREA[params[:pre][:code].to_i]
+      @selected[:area] = params[:area][:code].to_i
+
+      where_area = []
+      PRE_AREA[@selected[:pre]][@selected[:area]].each do |area_word|
+        where_area << "search_area_word LIKE '%#{area_word}%' "
+      end
+      where_str = "search_area_word LIKE '%#{PREFECTURES[@selected[:pre]]}%' AND (#{where_area.join('OR ')})"
+      @result_hotels = format_hotels(Hotel.where(where_str))
+    end
   end
 
   private
+
   def create_select_box(hs)
     return if hs.nil?
     option_list = Array.new
@@ -39,14 +39,11 @@ class IndexController < ApplicationController
     return option_list
   end
 
-  def format_scraping
-    format_scraping = Hash.new{|h,k| h[k]={Jalan: nil,Rakuten: nil,Ikkyu: nil}}
-    @scraping.each do |site_name,scr_arr|
-      scr_arr.each do |hotel_info|
-        hotel_name = NKF::nkf('-WwZ0', hotel_info[1][:title] )
-        format_scraping[hotel_name][site_name.to_sym] = hotel_info[1]
-      end
+  def format_hotels(hotels)
+    format_hotels = Hash.new{|h,k| h[k]={1=>nil,2=>nil,3=>nil}}
+    hotels.each do |hotel|
+      format_hotels[hotel.name][hotel.site_id] = hotel
     end
-    return format_scraping
+    return format_hotels
   end
 end
