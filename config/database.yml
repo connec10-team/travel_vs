@@ -14,7 +14,7 @@ development:
 
 production:
   <<: *default
-  database: wsmatch
+  database: travel
   username: root
   password: wsmatch_db_root
   host: wsmatch.cprx2pl2i3cs.ap-northeast-1.rds.amazonaws.com
