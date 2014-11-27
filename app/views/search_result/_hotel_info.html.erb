@@ -1,0 +1,39 @@
+<div class="hotel">
+
+  <h1><%= hotel_name %></h1>
+  <% desc_disp = false %>
+  <% hotels.each_value do |hotel| %>
+  <% if hotel.present? %>
+  <% if hotel.description.present? && desc_disp == false %>
+  <% desc_disp = true %>
+  <h3><%= hotel.description %></h3>
+  <% end %>
+  <img src="<%= hotel.image_url %>" alt=".." class="img-thumbnail img-size">
+  <% end %>
+  <% end %>
+  <br><br><br><br>
+  <table class="hotel_info">
+    <tr>
+      <th>
+      </th>
+      <th>プラン１</th>
+      <th>プラン２</th>
+      <th>プラン３</th>
+    </tr>
+    <% hotels.each do |site_id, hotel|%>
+    <tr>
+      <td class="logo">
+        <%= get_logo(site_id, hotel)%>
+      </td>
+      <% get_hotel_plans(hotel).each do |plan| %>
+      <td class="menu">
+        <% if plan.present? %>
+        <%= link_to(plan.title, plan.url, {target: ["_blank"], style: "display: block;"}) %><br>
+        <font color="red"><%= plan.price %></font>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+</div>

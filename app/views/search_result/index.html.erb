@@ -7,8 +7,8 @@
 
 <% if @result_hotels.present? %>
 <%= paginate @result_hotels %>
-<% @result_hotels.each do |hotel| %>
-  <%= render partial: "hotel_info", locals:{hotel_name: hotel[0], hotels: hotel[1]} %>
+<% @result_hotels.each do |hotel_name, hotels| %>
+  <%= render partial: "hotel_info", locals:{hotel_name: hotel_name, hotels: hotels} %>
 <% end %>
 <%= paginate @result_hotels %>
 <% end %>
