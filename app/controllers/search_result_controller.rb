@@ -1,7 +1,6 @@
 require 'nkf'
 
-class IndexController < ApplicationController
-
+class SearchResultController < ApplicationController
   def index
     @select_forms = Hash.new
     @selected = Hash.new{|h,k| h[k] = ""}
@@ -18,12 +17,12 @@ class IndexController < ApplicationController
         where_area << "search_area_word LIKE '%#{area_word}%' "
       end
       where_str = "search_area_word LIKE '%#{PREFECTURES[@selected[:pre]]}%' AND (#{where_area.join('OR ')})"
-      #@result_hotels = format_hotels(Hotel.where(where_str))
+      array_hotels = format_hotels(Hotel.where(where_str))
+      @result_hotels = Kaminari.paginate_array(array_hotels).page(params[:page]).per(10)
     end
   end
 
   private
-
   def create_select_box(hs)
     return if hs.nil?
     option_list = Array.new
@@ -36,5 +35,17 @@ class IndexController < ApplicationController
     end
 
     return option_list
+  end
+
+  def format_hotels(hotels)
+    group_hotels = Hash.new{|h,k| h[k]={1=>nil,2=>nil,3=>nil}}
+    format_hotels = Array.new
+    hotels.each do |hotel|
+      group_hotels[hotel.name][hotel.site_id] = hotel
+    end
+    group_hotels.each do |hotel_name,hotels|
+      format_hotels << [hotel_name,hotels]
+    end
+    return format_hotels
   end
 end

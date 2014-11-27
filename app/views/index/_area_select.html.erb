@@ -1,3 +1,4 @@
+<% if params[:controller] == "index" %>
 <!--★始まり-->
 <table cellspacing="0" cellpadding="6" <%= params[:pre].blank? ? "" : 'align=left' %>>
 	<tr>
@@ -27,7 +28,7 @@
 						<table cellspacing="1" cellpadding="0">
 							<tr height="40" style="font-size:10px;text-align:center;">
 								<td></td>
-								<td bgcolor="#8888ff" width="50"><a href="?pre[code]=1" target="_blank">北海道</a></td>
+								<td bgcolor="#8888ff" width="50"><a href="/area_select?pre[code]=1">北海道</a></td>
 							</tr>
 							<tr>
 								<td height="10"></td>
@@ -36,24 +37,24 @@
 						<table cellspacing="1" cellpadding="0" style="font-size:10px;text-align:center;margin-bottom:-1;">
 							<tr height="25">
 								<td></td><td></td><td></td><td width="30"></td>
-								<td bgcolor="#99ddff" width="30"><a href="?pre[code]=2" target="_blank">青森</a></td>
+								<td bgcolor="#99ddff" width="30"><a href="/area_select?pre[code]=2" >青森</a></td>
 								<td width="20"></td>
 							</tr>
 							<tr height="40">
 								<td></td><td></td><td width="30"></td>
-								<td bgcolor="#99ddff" width="30"><a href="?pre[code]=5" target="_blank">秋田</a></td>
-								<td bgcolor="#99ddff"><a href="?pre[code]=3" target="_blank">岩手</a></td>
+								<td bgcolor="#99ddff" width="30"><a href="/area_select?pre[code]=5" >秋田</a></td>
+								<td bgcolor="#99ddff"><a href="/area_select?pre[code]=3" >岩手</a></td>
 							</tr>
 							<tr height="35">
 								<td></td><td></td><td></td>
-								<td bgcolor="#99ddff" width="30"><a href="?pre[code]=6" target="_blank">山形</a></td>
-								<td bgcolor="#99ddff"><a href="?pre[code]=4" target="_blank">宮城</a></td>
+								<td bgcolor="#99ddff" width="30"><a href="/area_select?pre[code]=6" >山形</a></td>
+								<td bgcolor="#99ddff"><a href="/area_select?pre[code]=4" >宮城</a></td>
 							</tr>
 							<tr height="25">
-								<td bgcolor="#ccf577" width="30"><a href="?pre[code]=17" target="_blank">石川</a></td>
-								<td bgcolor="#ccf577" width="30"><a href="?pre[code]=16" target="_blank">富山</a></td>
-								<td bgcolor="#ccaaff" width="60" colspan="2"><a href="?pre[code]=15" target="_blank">新潟</a></td>
-								<td bgcolor="#99ddff" width="30"><a href="?pre[code]=7" target="_blank">福島</a></td>
+								<td bgcolor="#ccf577" width="30"><a href="/area_select?pre[code]=17" >石川</a></td>
+								<td bgcolor="#ccf577" width="30"><a href="/area_select?pre[code]=16" >富山</a></td>
+								<td bgcolor="#ccaaff" width="60" colspan="2"><a href="/area_select?pre[code]=15" >新潟</a></td>
+								<td bgcolor="#99ddff" width="30"><a href="/area_select?pre[code]=7" >福島</a></td>
 							</tr>
 						</table>
 					</td>
@@ -61,71 +62,76 @@
 			</table>
 			<table cellspacing="1" cellpadding="0" style="font-size:10px;text-align:center;border-style:none;">
 				<tr height="25">
-					<td bgcolor="#f5e577" width="26"><a href="?pre[code]=42" target="_blank">長崎</a></td>
-					<td bgcolor="#f5e577" width="26"><a href="?pre[code]=41" target="_blank">佐賀</a></td>
-					<td bgcolor="#f5e577" width="26"><a href="?pre[code]=40" target="_blank">福岡</a></td>
+					<td bgcolor="#f5e577" width="26"><a href="/area_select?pre[code]=42" >長崎</a></td>
+					<td bgcolor="#f5e577" width="26"><a href="/area_select?pre[code]=41" >佐賀</a></td>
+					<td bgcolor="#f5e577" width="26"><a href="/area_select?pre[code]=40" >福岡</a></td>
 					<td width="10"></td>
-					<td bgcolor="#ff88bb" width="26" rowspan="2"><a href="?pre[code]=35" target="_blank">山口</a></td>
-					<td bgcolor="#ff88bb" width="26"><a href="?pre[code]=32" target="_blank">島根</a></td>
-					<td bgcolor="#ff88bb" width="26"><a href="?pre[code]=31" target="_blank">鳥取</a></td>
-					<td bgcolor="#80f580" width="26" rowspan="2"><a href="?pre[code]=28" target="_blank">兵庫</a></td>
-					<td bgcolor="#80f580" width="30"><a href="?pre[code]=26" target="_blank">京都</a></td>
-					<td bgcolor="#80f580" width="26"><a href="?pre[code]=25" target="_blank">滋賀</a></td>
-					<td bgcolor="#ccf577" width="30"><a href="?pre[code]=18" target="_blank">福井</a></td>
-					<td bgcolor="#ccaaff" width="30" rowspan="2"><a href="?pre[code]=20" target="_blank">長野</a></td>
-					<td bgcolor="#ff99ff" width="30"><a href="?pre[code]=10" target="_blank">群馬</a></td>
-					<td bgcolor="#ff99ff" width="30"><a href="?pre[code]=9" target="_blank">栃木</a></td>
-					<td bgcolor="#ff99ff" width="30"><a href="?pre[code]=8" target="_blank">茨城</a></td>
+					<td bgcolor="#ff88bb" width="26" rowspan="2"><a href="/area_select?pre[code]=35" >山口</a></td>
+					<td bgcolor="#ff88bb" width="26"><a href="/area_select?pre[code]=32" >島根</a></td>
+					<td bgcolor="#ff88bb" width="26"><a href="/area_select?pre[code]=31" >鳥取</a></td>
+					<td bgcolor="#80f580" width="26" rowspan="2"><a href="/area_select?pre[code]=28" >兵庫</a></td>
+					<td bgcolor="#80f580" width="30"><a href="/area_select?pre[code]=26" >京都</a></td>
+					<td bgcolor="#80f580" width="26"><a href="/area_select?pre[code]=25" >滋賀</a></td>
+					<td bgcolor="#ccf577" width="30"><a href="/area_select?pre[code]=18" >福井</a></td>
+					<td bgcolor="#ccaaff" width="30" rowspan="2"><a href="/area_select?pre[code]=20" >長野</a></td>
+					<td bgcolor="#ff99ff" width="30"><a href="/area_select?pre[code]=10" >群馬</a></td>
+					<td bgcolor="#ff99ff" width="30"><a href="/area_select?pre[code]=9" >栃木</a></td>
+					<td bgcolor="#ff99ff" width="30"><a href="/area_select?pre[code]=8" >茨城</a></td>
 					<td width="20"></td>
 				</tr>
 				<tr height="25">
 					<td></td>
-					<td bgcolor="#f5e577"><a href="?pre[code]=43" target="_blank">熊本</a></td>
-					<td bgcolor="#f5e577"><a href="?pre[code]=44" target="_blank">大分</a></td>
+					<td bgcolor="#f5e577"><a href="/area_select?pre[code]=43" >熊本</a></td>
+					<td bgcolor="#f5e577"><a href="/area_select?pre[code]=44" >大分</a></td>
 					<td></td>
-					<td bgcolor="#ff88bb"><a href="?pre[code]=34" target="_blank">広島</a></td>
-					<td bgcolor="#ff88bb"><a href="?pre[code]=33" target="_blank">岡山</a></td>
-					<td bgcolor="#80f580"><a href="?pre[code]=27" target="_blank">大阪</a></td>
-					<td bgcolor="#80f580"><a href="?pre[code]=29" target="_blank">奈良</a></td>
-					<td bgcolor="#ffcc88"><a href="?pre[code]=21" target="_blank">岐阜</a></td>
-					<td bgcolor="#ff99ff"><a href="?pre[code]=19" target="_blank">山梨</a></td>
-					<td bgcolor="#ff99ff"><a href="?pre[code]=11" target="_blank">埼玉</a></td>
-					<td bgcolor="#ff99ff"><a href="?pre[code]=12" target="_blank">千葉</a></td>
+					<td bgcolor="#ff88bb"><a href="/area_select?pre[code]=34" >広島</a></td>
+					<td bgcolor="#ff88bb"><a href="/area_select?pre[code]=33" >岡山</a></td>
+					<td bgcolor="#80f580"><a href="/area_select?pre[code]=27" >大阪</a></td>
+					<td bgcolor="#80f580"><a href="/area_select?pre[code]=29" >奈良</a></td>
+					<td bgcolor="#ffcc88"><a href="/area_select?pre[code]=21" >岐阜</a></td>
+					<td bgcolor="#ff99ff"><a href="/area_select?pre[code]=19" >山梨</a></td>
+					<td bgcolor="#ff99ff"><a href="/area_select?pre[code]=11" >埼玉</a></td>
+					<td bgcolor="#ff99ff"><a href="/area_select?pre[code]=12" >千葉</a></td>
 				</tr>
 				<tr height="24">
 					<td></td>
-					<td bgcolor="#f5e577"><a href="?pre[code]=46" target="_blank">鹿児島</a></td>
-					<td bgcolor="#f5e577"><a href="?pre[code]=45" target="_blank">宮崎</a></td>
+					<td bgcolor="#f5e577"><a href="/area_select?pre[code]=46" >鹿児島</a></td>
+					<td bgcolor="#f5e577"><a href="/area_select?pre[code]=45" >宮崎</a></td>
 					<td></td><td></td><td></td><td></td><td></td>
-					<td bgcolor="#80f580"><a href="?pre[code]=30" target="_blank">和歌山</a></td>
-					<td bgcolor="#ffcc88"><a href="?pre[code]=24" target="_blank">三重</a></td>
-					<td bgcolor="#ffcc88"><a href="?pre[code]=23" target="_blank">愛知</a></td>
-					<td bgcolor="#ffcc88"><a href="?pre[code]=22" target="_blank">静岡</a></td>
-					<td bgcolor="#ff99ff"><a href="?pre[code]=14" target="_blank">神奈川</a></td>
-					<td bgcolor="#ff99ff"><a href="?pre[code]=13" target="_blank">東京</a></td>
+					<td bgcolor="#80f580"><a href="/area_select?pre[code]=30" >和歌山</a></td>
+					<td bgcolor="#ffcc88"><a href="/area_select?pre[code]=24" >三重</a></td>
+					<td bgcolor="#ffcc88"><a href="/area_select?pre[code]=23" >愛知</a></td>
+					<td bgcolor="#ffcc88"><a href="/area_select?pre[code]=22" >静岡</a></td>
+					<td bgcolor="#ff99ff"><a href="/area_select?pre[code]=14" >神奈川</a></td>
+					<td bgcolor="#ff99ff"><a href="/area_select?pre[code]=13" >東京</a></td>
 				</tr>
 				<tr height="20">
 					<td></td><td></td><td></td><td></td><td></td>
-					<td bgcolor="#ddbb99"><a href="?pre[code]=38" target="_blank">愛媛</a></td>
-					<td bgcolor="#ddbb99"><a href="?pre[code]=37" target="_blank">香川</a></td>
+					<td bgcolor="#ddbb99"><a href="/area_select?pre[code]=38" >愛媛</a></td>
+					<td bgcolor="#ddbb99"><a href="/area_select?pre[code]=37" >香川</a></td>
 					</tr><tr height="20">
-					<td bgcolor="#ff8888"><a href="?pre[code]=47" target="_blank">沖縄</a></td>
+					<td bgcolor="#ff8888"><a href="/area_select?pre[code]=47" >沖縄</a></td>
 					<td></td><td></td><td></td><td></td>
-					<td bgcolor="#ddbb99"><a href="?pre[code]=39" target="_blank">高知</a></td>
-					<td bgcolor="#ddbb99"><a href="?pre[code]=36" target="_blank">徳島</a></td>
+					<td bgcolor="#ddbb99"><a href="/area_select?pre[code]=39" >高知</a></td>
+					<td bgcolor="#ddbb99"><a href="/area_select?pre[code]=36" >徳島</a></td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 </table>
 <!--終わり★-->
-<% if params[:pre].present? %>
+<% else %>
 	<div class="map_frame">
-		<ul id="map_area" class="map_area">
+	<% count_data = PRE_AREA[params[:pre][:code].to_i].count.divmod(2)
+     count_data[0] += 1 if count_data[1] != 0
+	   height_px = count_data[0] * 20 %>
+		<ul id="map_area" class="map_area" style='<%= "height: #{height_px}px" %>'>
 			<% PRE_AREA[params[:pre][:code].to_i].each do |key, value| %>
-    		<li><a href=<%= "?pre[code]=#{params[:pre][:code]}&area[code]=#{key}" %>>
-          <div><%= value.join("・") %></div>
-        </a></li>
+          <div style="float: left;width: 295px;"><li>
+          	<a href=<%= "/search_result?pre[code]=#{params[:pre][:code]}&area[code]=#{key}" %>>
+          	  <%= value.join("・") %>
+          	</a>
+          </li></div>
       <% end %>
    </ul>
   </div>

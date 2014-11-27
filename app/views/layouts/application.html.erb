@@ -21,6 +21,13 @@
 <div class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
+      <%= link_to "#help", role: "button", data: {toggle: "modal"} do %>
+        <i class="glyphicon glyphicon-question-sign"></i>
+      <% end %>
+
+      <div id="help" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <%= render partial: "index/help_modal" %>
+      </div>
       <%= link_to "Travel VS", root_path(), class: "navbar-brand" %>
     </div>
   </div>

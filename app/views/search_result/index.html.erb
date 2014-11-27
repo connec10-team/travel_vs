@@ -1,11 +1,14 @@
 <%= form_tag root_path(), name: "search_form", method: :get, class: "form-horizontal" do %>
-  <%= render partial: "area_select" %>
+  <%= render partial: "index/area_select" %>
 
   <button class="btn btn-default" type="submit">search</button>
 <% end %>
 
+
 <% if @result_hotels.present? %>
+<%= paginate @result_hotels %>
 <% @result_hotels.each do |hotel_name, hotels| %>
   <%= render partial: "hotel_info", locals:{hotel_name: hotel_name, hotels: hotels} %>
 <% end %>
+<%= paginate @result_hotels %>
 <% end %>

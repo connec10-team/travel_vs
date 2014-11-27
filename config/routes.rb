@@ -2,8 +2,12 @@ Scrapingtest::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root 'index#index'
-
+  
+  #resoruces :scraping
   get 'scraping/hotel_save' => 'scraping#hotel_save'
+  #resources :area_select
+  get 'area_select', :to => 'area_select#index'
+  get 'search_result', :to => 'search_result#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
