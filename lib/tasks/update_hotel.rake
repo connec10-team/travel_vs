@@ -3,6 +3,7 @@ namespace :update_hotel do
 
   task :exec => :environment do
     p "tasc start"
+    start_time = Time.now
     @format_scrapings = Array.new
     PREFECTURES.each_value do |pre_word|
       p "#{pre_word} is scraping end!"
@@ -34,8 +35,8 @@ namespace :update_hotel do
         end
       end
     end
-
     p "task end"
+    p "処理時間 #{Time.now - start_time}s"
   end
 
 end
